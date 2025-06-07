@@ -1,5 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
-import { debounce } from 'lodash';
+
+// Simple debounce implementation
+function debounce<T extends (...args: any[]) => any>(func: T, delay: number): T {
+  let timeoutId: NodeJS.Timeout;
+  return ((...args: any[]) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  }) as T;
+}
 
 interface ColorPickerProps {
   initialColor?: string;

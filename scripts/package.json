@@ -1,0 +1,10 @@
+{
+  "name": "kri8tive-ecommerce-scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "node-appwrite": "^15.0.1",
+    "dotenv": "^16.4.7"
+  }
+} 

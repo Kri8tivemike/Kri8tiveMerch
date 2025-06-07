@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running deprecated code scan..."
+npm run scan-deprecated
+
+# Check if scan found any HIGH priority issues
+if [ $? -ne 0 ]; then
+  echo "❌ Deprecated code scan failed. Please fix HIGH priority issues before committing."
+  exit 1
+fi
+
+echo "✅ Deprecated code scan passed" 

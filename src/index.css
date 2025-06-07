@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+  
+  body {
+    @apply bg-light-background text-light-text transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-dark-background text-dark-text;
+  }
+
+  /* Smooth transitions for theme change */
+  *, *::before, *::after {
+    @apply transition-colors duration-200;
+  }
+
+  /* Base element styling for dark mode */
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-gray-100;
+  }
+
+  .dark p, .dark span, .dark div {
+    @apply text-gray-300;
+  }
+
+  /* Override for elements that should maintain color */
+  .text-primary-gold {
+    color: #e98003 !important;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-orange text-black hover:bg-primary-orange-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-primary-emerald text-white hover:bg-primary-emerald-dark;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-primary-orange text-primary-orange hover:bg-primary-orange hover:text-black;
+  }
+
+  .card {
+    @apply bg-light-surface shadow-md rounded-lg p-6;
+  }
+
+  .dark .card {
+    @apply bg-dark-surface;
+  }
+
+  .input {
+    @apply bg-light-surface border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-primary-orange focus:border-transparent;
+  }
+
+  .dark .input {
+    @apply bg-dark-surface border-gray-700;
+  }
+
+  /* Theme toggle specific styles */
+  .theme-toggle {
+    @apply relative rounded-full p-2 transition-colors duration-200 ease-in-out;
+  }
+
+  .theme-toggle.light {
+    @apply bg-gray-100 hover:bg-gray-200 text-primary-orange;
+  }
+
+  .theme-toggle.dark {
+    @apply bg-gray-800 hover:bg-gray-700 text-primary-orange;
+  }
+
+  /* Navigation links */
+  .nav-link {
+    @apply text-gray-700 hover:text-primary-orange transition-colors;
+  }
+
+  .dark .nav-link {
+    @apply text-gray-200;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .orange-glow {
+    @apply hover:shadow-[0_0_15px_rgba(233,128,3,0.5)];
+  }
+
+  .emerald-glow {
+    @apply hover:shadow-[0_0_15px_rgba(16,185,129,0.5)];
+  }
+
+  /* AVIF optimization utilities */
+  .priority-image {
+    @apply relative;
+  }
+
+  .priority-image img {
+    @apply transition-opacity duration-300;
+  }
+
+  /* Loading skeleton improvements */
+  .skeleton {
+    @apply bg-gray-200 dark:bg-gray-700 animate-pulse;
+  }
+
+  .skeleton-shimmer {
+    @apply relative overflow-hidden bg-gray-200 dark:bg-gray-700;
+  }
+
+  .skeleton-shimmer::after {
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    content: '';
+    animation: shimmer 2s infinite;
+    transform: translateX(-100%);
+  }
+}

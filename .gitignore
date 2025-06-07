@@ -31,6 +31,9 @@ Environment variables
 .env.test.local
 .env.production.local
 
+# Package manager lock files (reduce repo size for deployment)
+package-lock.json
+
 # Database files
 *.db
 *.db-journal
